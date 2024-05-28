@@ -1,12 +1,40 @@
-// Создаём роут для запросов категорий 
 const usersRouter = require('express').Router();
 
-// Импортируем вспомогательные функции
-const findAllUsers = require('../middlewares/users');
-const sendAllUsers = require('../controllers/users');
+const { findAllUsers, createUser, findUserById, updateUser, deleteUser, checkEmptyNameAndEmailAndPassword, checkEmptyNameAndEmail, checkIsUserExists } = require('../middlewares');
+const { sendAllUsers, sendUserCreated, sendUserById, sendUserUpdated, sendUserDeleted } = require('../controllers');
 
-// Обрабатываем GET-запрос с роутом '/categories'
-usersRouter.get('/users', findAllUsers, sendAllUsers);
+usersRouter.get(
+    '/users',
+    findAllUsers,
+    sendAllUsers
+);
 
-// Экспортируем роут для использования в приложении — app.js
-module.exports = usersRouter;
+usersRouter.get(
+    '/users/:id',
+    findUserById,
+    sendUserById
+)
+
+usersRouter.post(
+    "/users",
+    findAllUsers,
+    checkIsUserExists,
+    checkEmptyNameAndEmailAndPassword,
+    createUser,
+    sendUserCreated
+);
+
+usersRouter.put(
+    "/users/:id",
+    checkEmptyNameAndEmail,
+    updateUser,
+    sendUserUpdated
+);
+
+usersRouter.delete(
+    '/users/:id',
+    deleteUser,
+    sendUserDeleted
+)
+
+module.exports = { usersRouter };
