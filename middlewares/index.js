@@ -1,8 +1,11 @@
+const { checkAuth, checkCookiesJWT } = require('./auth');
 const { findAllCategories, createCategory, findCategoryById, updateCategory, deleteCategory, checkIsCategoryExists, checkEmptyName } = require('./categories');
-const { findAllGames, createGame, findGameById, updateGame, deleteGame, checkEmptyFields, checkIfCategoriesAvaliable, checkIfUsersAreSafe, checkIsGameExists } = require('./games');
-const { findAllUsers, createUser, findUserById, updateUser, deleteUser, checkEmptyNameAndEmailAndPassword, checkEmptyNameAndEmail, checkIsUserExists } = require('./users')
+const cors = require('./cors');
+const { findAllGames, createGame, findGameById, updateGame, deleteGame, checkEmptyFields, checkIfCategoriesAvaliable, checkIfUsersAreSafe, checkIsGameExists, checkIsVoteRequest } = require('./games');
+const { findAllUsers, createUser, findUserById, updateUser, deleteUser, checkEmptyNameAndEmailAndPassword, checkEmptyNameAndEmail, checkIsUserExists, hashPassword } = require('./users')
 
 module.exports = {
+    cors,
     findAllCategories,
     findAllGames,
     findAllUsers,
@@ -27,5 +30,9 @@ module.exports = {
     checkEmptyNameAndEmailAndPassword,
     checkEmptyNameAndEmail,
     checkIsUserExists,
-    checkIfCategoriesAvaliable
+    checkIfCategoriesAvaliable,
+    hashPassword,
+    checkAuth,
+    checkCookiesJWT,
+    checkIsVoteRequest,
 }
