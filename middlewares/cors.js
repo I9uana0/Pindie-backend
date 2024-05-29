@@ -3,6 +3,7 @@ const allowedCores = [
     'https://students-projects.ru',
     'http://localhost:3000',
     'http://localhost:3001',
+    'https://pindiebyi9uana0.nomorepartiesco.ru',
 
 ]
 
