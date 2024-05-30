@@ -1,4 +1,4 @@
-const allowedCores = [
+const allowedCores = ['*',
     'https://practicum.yandex.ru',
     'https://students-projects.ru',
     'http://localhost:3000',
